@@ -1,13 +1,14 @@
 version: '3'
-
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/usr/src/app
-    env_file:
-      - .env
+  langchain-chainlit-chat-app:
+    image: langchain-chainlit-chat-app:latest
+    build: .
     ports:
-      - '8080:8080'
+      - "8000:8000"
+    working_dir: /home/appuser/app/
+    command:
+      [
+        "chainlit",
+        "run",
+        "/home/appuser/app/demo_app/main.py"
+      ]
