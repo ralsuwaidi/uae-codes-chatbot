@@ -14,7 +14,7 @@ settings = {
 
 def get_dalle_image(prompt):
     response = openai.Image.create(
-        prompt=f"UAE in the future and {prompt}", n=1, size="256x256"
+        prompt=f"Dubai in the future and {prompt}", n=1, size="256x256"
     )
     image_url = response["data"][0]["url"]
     return image_url

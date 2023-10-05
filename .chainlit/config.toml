@@ -27,6 +27,8 @@ session_timeout = 3600
 # Name of the app and chatbot.
 name = "Chatbot"
 
+custom_css = '/home/appuser/app/public/stylesheet.css'
+
 # Description of the app and chatbot. This is used for HTML tags.
 # description = ""
 
