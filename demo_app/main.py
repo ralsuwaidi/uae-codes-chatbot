@@ -60,7 +60,7 @@ async def main(message: str):
             content="Do you think it would look like this?", elements=elements
         ).send()
         msg = cl.Message(
-            content=f"Congratulations {user_session.get('NAME')}, you just generated an image using AI! The text that you sent was used as a prompt to control the output of the image. Have a lok at our [generative AI guide](https://ai.gov.ae) to learn more. Feel free to talk to me if you want to learn more about AI/ generative AI or anything else."
+            content=f"Congratulations {user_session.get('NAME')}, you just generated an image using AI! The text that you sent was used as a prompt to control the output of the image. Have a look at our [Generative AI Guide](https://ai.gov.ae) to learn more. Feel free to talk to me if you want to learn more about AI/ generative AI or anything else."
         )
         message_history.append({"role": "assistant", "content": msg.content})
     else:
