@@ -49,7 +49,7 @@ async def main(message: str):
     if user_session.get("NAME") == "":
         user_session.set("NAME", message)
         msg = cl.Message(
-            content=f'Hello {user_session.get("NAME")}, I want to create an artistic image of my cat, choose a style that you think would work. [eg. "Futuristic, Vaporwave, Stained glass, etc"]'
+            content=f'In alignment with UAE Codes we want you to become a future prompt engineer. Prompt engineering gives you the ability to control an output of an AI and in this example I want to show you how you can do this with an image of a cat. Choose a style that you would like to see this image. [eg. "Futuristic, Vaporwave, Stained glass, etc"]'
         )
         message_history.append({"role": "assistant", "content": msg.content})
     elif user_session.get("PICTURE") == "":
