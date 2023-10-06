@@ -14,7 +14,9 @@ settings = {
 
 def get_dalle_image(prompt):
     response = openai.Image.create(
-        prompt=f"Dubai in the future and {prompt}", n=1, size="256x256"
+        prompt=f"A beautiful and regal cat, 4k, epic in the style of {prompt}",
+        n=1,
+        size="256x256",
     )
     image_url = response["data"][0]["url"]
     return image_url
@@ -47,7 +49,7 @@ async def main(message: str):
     if user_session.get("NAME") == "":
         user_session.set("NAME", message)
         msg = cl.Message(
-            content=f'Hello {user_session.get("NAME")}, I want to create an image of the UAE in the future, in three words can you describe your idea? [eg. "Futuristic, Snowy and vibrant"]'
+            content=f'Hello {user_session.get("NAME")}, I want to create an artistic image of my cat, choose a style that you think would work. [eg. "Futuristic, Vaporwave, Stained glass, etc"]'
         )
         message_history.append({"role": "assistant", "content": msg.content})
     elif user_session.get("PICTURE") == "":
@@ -56,9 +58,7 @@ async def main(message: str):
         image_url = await cl.make_async(get_dalle_image)(message)
         elements = [cl.Image(name="UAE in the future", display="inline", url=image_url)]
 
-        await cl.Message(
-            content="Do you think it would look like this?", elements=elements
-        ).send()
+        await cl.Message(content="What do you think of this?", elements=elements).send()
         msg = cl.Message(
             content=f"Congratulations {user_session.get('NAME')}, you just generated an image using AI! The text that you sent was used as a prompt to control the output of the image. Have a look at our [Generative AI Guide](https://ai.gov.ae) to learn more. Feel free to talk to me if you want to learn more about AI/ generative AI or anything else."
         )
