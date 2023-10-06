@@ -3,6 +3,8 @@ services:
   langchain-chainlit-chat-app:
     image: langchain-chainlit-chat-app:latest
     build: .
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     working_dir: /home/appuser/app/

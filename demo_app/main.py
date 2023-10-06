@@ -56,9 +56,13 @@ async def main(message: str):
         image_url = await cl.make_async(get_dalle_image)(message)
         elements = [cl.Image(name="UAE in the future", display="inline", url=image_url)]
 
-        msg = cl.Message(
+        await cl.Message(
             content="Do you think it would look like this?", elements=elements
+        ).send()
+        msg = cl.Message(
+            content=f"Congratulations {user_session.get('NAME')}, you just generated an image using AI! The text that you sent was used as a prompt to control the output of the image. Have a lok at our [generative AI guide](https://ai.gov.ae) to learn more. Feel free to talk to me if you want to learn more about AI/ generative AI or anything else."
         )
+        message_history.append({"role": "assistant", "content": msg.content})
     else:
         async for stream_resp in await openai.ChatCompletion.acreate(
             model=model_name, messages=message_history, stream=True, **settings
